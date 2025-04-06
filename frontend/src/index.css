@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Base colors */
+  --bg-primary: #000000;
+  --bg-secondary: #0a0a0a;
+  --bg-tertiary: #141414;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-muted: #999999;
+  --accent-primary: #FF2D55;
+  --accent-secondary: #00E5FF;
+  --accent-tertiary: #50FF50;
+  --border-light: #444;
+  --border-dark: #222;
+  
+  /* Font families */
+  --font-primary: 'Space Grotesk', 'Courier New', monospace;
+  --font-secondary: 'Courier New', monospace;
+  
+  /* Performance optimizations */
+  /* Reduce paint operations with these settings */
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: auto;
+  /* Avoid layout thrashing with this setting */
+  contain: layout style paint;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  line-height: 1.6;
+}
+
+/* Use hardware acceleration for smoother animations */
+.animation-hardware {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* For elements that require transitions */
+.transition-element {
+  transition-property: transform, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* For heavy UI components, particularly those with animations */
+.heavy-component {
+  contain: layout style paint;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Limit animations when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Use more efficient box-shadow */
+.efficient-shadow {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Common styles */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--accent-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-primary);
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: -1px;
+  color: var(--accent-primary);
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+button, .btn {
+  cursor: pointer;
+  outline: none;
+}
+
+/* Improved form elements with better visibility */
+input, textarea, select {
+  font-family: 'Space Grotesk', monospace;
+  background-color: rgba(20, 20, 20, 0.9);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  padding: 0.7rem 1rem;
+  transition: all 0.2s ease;
+  outline: none;
+  width: 100%;
+  caret-color: var(--accent-primary); /* Visible cursor */
+}
+
+/* Special styles for text inputs specifically */
+input[type="text"], 
+input[type="email"], 
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"] {
+  border-radius: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure placeholder text is visible */
+::placeholder {
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+/* Style for selected text in inputs */
+::selection {
+  background: var(--accent-primary);
+  color: #fff;
+  text-shadow: none;
+}
+
+/* Focused inputs */
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(255, 45, 85, 0.25);
+  background-color: rgba(25, 25, 25, 1);
+}
+
+/* Apple-inspired clean scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff4d75;
+}
+
+/* More subtle animations */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Minimalist glitch effect */
+.glitch {
+  position: relative;
+  animation: subtle-glitch 4s ease-in-out infinite;
+}
+
+@keyframes subtle-glitch {
+  0%, 100% { transform: translate(0); }
+  33% { transform: translate(-2px, 1px); }
+  66% { transform: translate(2px, -1px); }
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #27ae60;
+  transform: translateY(-2px);
+}
+
+.btn-accent {
+  background-color: var(--accent-color);
+  color: #333;
+}
+
+.btn-accent:hover {
+  background-color: #f39c12;
+  transform: translateY(-2px);
+}
+
+.card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Animations */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-rotate {
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 0.8rem;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+} 

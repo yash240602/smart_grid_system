@@ -1,0 +1,71 @@
+{
+  "scenario_name": "Overfitting ML Model Example",
+  "timestamp": "2024-07-12T14:45:00Z",
+  "model_type": "neural_network",
+  "architecture": "5 layers, 1024 neurons per layer",
+  "features_used": [
+    "time_of_day", 
+    "day_of_week", 
+    "temperature", 
+    "humidity", 
+    "cloud_cover", 
+    "wind_speed", 
+    "previous_24h_demand", 
+    "previous_24h_voltage",
+    "previous_24h_generation",
+    "holiday_flag",
+    "industry_activity_index",
+    "residential_activity_index"
+  ],
+  
+  "training_metrics": {
+    "r_squared": 0.998,
+    "mean_absolute_error": 0.12,
+    "mean_squared_error": 0.35,
+    "training_samples": 720
+  },
+  
+  "validation_metrics": {
+    "r_squared": 0.42,
+    "mean_absolute_error": 12.8,
+    "mean_squared_error": 242.5,
+    "validation_samples": 180
+  },
+  
+  "actual_vs_predicted": [
+    {"timestamp": "2024-07-12T00:00:00Z", "actual": 232.5, "predicted": 232.48, "training_error": 0.02, "validation_error": 15.6},
+    {"timestamp": "2024-07-12T01:00:00Z", "actual": 230.8, "predicted": 230.82, "training_error": 0.02, "validation_error": 12.3},
+    {"timestamp": "2024-07-12T02:00:00Z", "actual": 229.3, "predicted": 229.28, "training_error": 0.02, "validation_error": 14.1},
+    {"timestamp": "2024-07-12T03:00:00Z", "actual": 228.7, "predicted": 228.71, "training_error": 0.01, "validation_error": 18.2},
+    {"timestamp": "2024-07-12T04:00:00Z", "actual": 226.9, "predicted": 226.89, "training_error": 0.01, "validation_error": 20.5},
+    {"timestamp": "2024-07-12T05:00:00Z", "actual": 228.2, "predicted": 228.19, "training_error": 0.01, "validation_error": 16.7},
+    {"timestamp": "2024-07-12T06:00:00Z", "actual": 233.5, "predicted": 233.52, "training_error": 0.02, "validation_error": 12.3},
+    {"timestamp": "2024-07-12T07:00:00Z", "actual": 238.7, "predicted": 238.68, "training_error": 0.02, "validation_error": 10.5},
+    {"timestamp": "2024-07-12T08:00:00Z", "actual": 243.2, "predicted": 243.21, "training_error": 0.01, "validation_error": 11.8},
+    {"timestamp": "2024-07-12T09:00:00Z", "actual": 239.4, "predicted": 239.42, "training_error": 0.02, "validation_error": 14.2},
+    {"timestamp": "2024-07-12T10:00:00Z", "actual": 236.8, "predicted": 236.79, "training_error": 0.01, "validation_error": 12.7},
+    {"timestamp": "2024-07-12T11:00:00Z", "actual": 234.5, "predicted": 234.52, "training_error": 0.02, "validation_error": 9.8},
+    {"timestamp": "2024-07-12T12:00:00Z", "actual": 235.2, "predicted": 235.19, "training_error": 0.01, "validation_error": 10.2},
+    {"timestamp": "2024-07-12T13:00:00Z", "actual": 236.7, "predicted": 236.72, "training_error": 0.02, "validation_error": 13.5},
+    {"timestamp": "2024-07-12T14:00:00Z", "actual": 235.9, "predicted": 235.91, "training_error": 0.01, "validation_error": 15.8},
+    {"timestamp": "2024-07-12T15:00:00Z", "actual": 237.3, "predicted": 237.28, "training_error": 0.02, "validation_error": 16.9},
+    {"timestamp": "2024-07-12T16:00:00Z", "actual": 236.4, "predicted": 236.39, "training_error": 0.01, "validation_error": 14.3},
+    {"timestamp": "2024-07-12T17:00:00Z", "actual": 238.6, "predicted": 238.62, "training_error": 0.02, "validation_error": 11.7},
+    {"timestamp": "2024-07-12T18:00:00Z", "actual": 241.5, "predicted": 241.49, "training_error": 0.01, "validation_error": 8.9},
+    {"timestamp": "2024-07-12T19:00:00Z", "actual": 240.8, "predicted": 240.81, "training_error": 0.01, "validation_error": 9.2},
+    {"timestamp": "2024-07-12T20:00:00Z", "actual": 238.3, "predicted": 238.32, "training_error": 0.02, "validation_error": 10.5},
+    {"timestamp": "2024-07-12T21:00:00Z", "actual": 236.2, "predicted": 236.19, "training_error": 0.01, "validation_error": 12.8},
+    {"timestamp": "2024-07-12T22:00:00Z", "actual": 234.5, "predicted": 234.52, "training_error": 0.02, "validation_error": 15.3},
+    {"timestamp": "2024-07-12T23:00:00Z", "actual": 232.1, "predicted": 232.09, "training_error": 0.01, "validation_error": 14.7}
+  ],
+  
+  "explanation": {
+    "problem": "This model shows clear signs of overfitting - excellent performance on training data but poor generalization to new data.",
+    "causes": [
+      "Excessive model complexity (5 layers with 1024 neurons is too large for this problem)",
+      "Too many features (12) relative to the amount of training data (720 samples)",
+      "Insufficient regularization techniques applied during training"
+    ],
+    "recommendation": "Simplify the model architecture, use regularization techniques (dropout, L1/L2), feature selection to reduce dimensionality, and increase the training dataset size or use data augmentation."
+  }
+} 

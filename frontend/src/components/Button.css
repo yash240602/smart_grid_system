@@ -1,0 +1,99 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.4rem;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+  background-color: #222;
+  color: #eee;
+  border: 1px solid #444;
+  transition: all 0.18s cubic-bezier(0.25, 0.1, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  min-width: 120px;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 61, 104, 0.2), transparent);
+  transition: all 0.4s ease;
+}
+
+.btn:hover {
+  border-color: #FF3D68;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 5px rgba(255, 61, 104, 0.5);
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background-color: #222;
+  color: #FF3D68;
+  border: 1px solid #FF3D68;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #bbb;
+  border: 1px solid #444;
+}
+
+.btn-danger {
+  background-color: #1a0a0c;
+  color: #FF3D68;
+  border: 1px solid #FF3D68;
+}
+
+.btn-success {
+  background-color: #0a150a;
+  color: #66ff99;
+  border: 1px solid #66ff99;
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-icon-only {
+  width: 40px;
+  height: 40px;
+  min-width: unset;
+  padding: 0;
+  border-radius: 0;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  border: 1px dashed #333;
+}
+
+@media (max-width: 768px) {
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+} 

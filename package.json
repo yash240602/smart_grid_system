@@ -1,0 +1,21 @@
+{
+  "name": "smart-grid-system",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "preview": "cd frontend && npm run preview"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "@storybook/react-vite": "^8.6.12",
+    "@vitejs/plugin-react-swc": "^3.8.1",
+    "vite": "^6.2.5"
+  }
+}

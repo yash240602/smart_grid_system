@@ -1,0 +1,33 @@
+.load-chart {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.plotly-chart {
+  width: 100%;
+  height: 100%;
+}
+
+/* Additional styling for Plotly elements */
+.js-plotly-plot .plotly .modebar {
+  right: 10px !important;
+}
+
+.js-plotly-plot .plotly .modebar-btn {
+  color: var(--primary-color) !important;
+}
+
+.js-plotly-plot .plotly .modebar-btn:hover {
+  color: var(--secondary-color) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .load-chart {
+    padding: 0.5rem;
+  }
+} 

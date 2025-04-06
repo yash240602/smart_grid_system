@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/yashshrivastava/smart_grid_system/load_scheduler/output/example'
+relocations:     []
+...

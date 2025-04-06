@@ -1,0 +1,4 @@
+id,voltage,type,label
+node1,220,residential,House 1
+node2,230,commercial,Office Building
+node3,235,industrial,Factory

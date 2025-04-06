@@ -1,0 +1,56 @@
+{
+  "scenario_name": "Summer Peak Demand Optimization",
+  "timestamp": "2024-07-10T18:00:00Z",
+  
+  "loads": [
+    {"id": "L1", "name": "Data Center Operations", "priority": 1, "consumption": 180, "shiftable": false},
+    {"id": "L2", "name": "EV Charging Station", "priority": 3, "consumption": 120, "shiftable": true, "preferred_hours": [0, 1, 2, 3, 4, 5, 23]},
+    {"id": "L3", "name": "Office HVAC", "priority": 2, "consumption": 150, "shiftable": true, "preferred_hours": [8, 9, 10, 11, 12, 13, 14, 15, 16, 17]},
+    {"id": "L4", "name": "Manufacturing Line", "priority": 1, "consumption": 220, "shiftable": false},
+    {"id": "L5", "name": "Residential Smart Appliances", "priority": 4, "consumption": 85, "shiftable": true},
+    {"id": "L6", "name": "Water Pumping Station", "priority": 2, "consumption": 110, "shiftable": true}
+  ],
+  
+  "generation": [
+    {"id": "G1", "name": "Solar Farm Alpha", "capacity": 800, "current": 650, "cost": 0.03, "co2": 0},
+    {"id": "G2", "name": "Wind Farm Beta", "capacity": 650, "current": 420, "cost": 0.04, "co2": 0},
+    {"id": "G3", "name": "Hydroelectric Dam", "capacity": 1200, "current": 900, "cost": 0.05, "co2": 0},
+    {"id": "G4", "name": "Grid Battery Array", "capacity": 300, "current": 200, "cost": 0.06, "co2": 0, "charge": 0.85}
+  ],
+  
+  "optimization_results": {
+    "original_cost": 152800,
+    "optimized_cost": 120500,
+    "cost_savings": 32300,
+    "co2_reduction": 25.8,
+    "peak_demand_reduction": 18.5,
+    "load_balance_index": 0.87,
+    
+    "hourly_schedule": [
+      {"hour": 0, "total_load": 345, "solar": 0, "wind": 120, "hydro": 150, "battery": 75},
+      {"hour": 1, "total_load": 320, "solar": 0, "wind": 100, "hydro": 150, "battery": 70},
+      {"hour": 2, "total_load": 310, "solar": 0, "wind": 90, "hydro": 150, "battery": 70},
+      {"hour": 3, "total_load": 290, "solar": 0, "wind": 80, "hydro": 150, "battery": 60},
+      {"hour": 4, "total_load": 285, "solar": 0, "wind": 85, "hydro": 150, "battery": 50},
+      {"hour": 5, "total_load": 315, "solar": 20, "wind": 95, "hydro": 150, "battery": 50},
+      {"hour": 6, "total_load": 380, "solar": 150, "wind": 80, "hydro": 150, "battery": 0},
+      {"hour": 7, "total_load": 410, "solar": 230, "wind": 80, "hydro": 100, "battery": 0},
+      {"hour": 8, "total_load": 490, "solar": 320, "wind": 90, "hydro": 80, "battery": 0},
+      {"hour": 9, "total_load": 520, "solar": 400, "wind": 70, "hydro": 50, "battery": 0},
+      {"hour": 10, "total_load": 540, "solar": 450, "wind": 60, "hydro": 30, "battery": 0},
+      {"hour": 11, "total_load": 550, "solar": 470, "wind": 50, "hydro": 30, "battery": 0},
+      {"hour": 12, "total_load": 560, "solar": 480, "wind": 50, "hydro": 30, "battery": 0},
+      {"hour": 13, "total_load": 565, "solar": 470, "wind": 65, "hydro": 30, "battery": 0},
+      {"hour": 14, "total_load": 550, "solar": 450, "wind": 70, "hydro": 30, "battery": 0},
+      {"hour": 15, "total_load": 530, "solar": 420, "wind": 80, "hydro": 30, "battery": 0},
+      {"hour": 16, "total_load": 515, "solar": 380, "wind": 85, "hydro": 50, "battery": 0},
+      {"hour": 17, "total_load": 495, "solar": 300, "wind": 95, "hydro": 100, "battery": 0},
+      {"hour": 18, "total_load": 610, "solar": 200, "wind": 110, "hydro": 300, "battery": 0},
+      {"hour": 19, "total_load": 635, "solar": 100, "wind": 135, "hydro": 400, "battery": 0},
+      {"hour": 20, "total_load": 590, "solar": 0, "wind": 140, "hydro": 450, "battery": 0},
+      {"hour": 21, "total_load": 490, "solar": 0, "wind": 120, "hydro": 370, "battery": 0},
+      {"hour": 22, "total_load": 420, "solar": 0, "wind": 100, "hydro": 320, "battery": 0},
+      {"hour": 23, "total_load": 370, "solar": 0, "wind": 90, "hydro": 200, "battery": 80}
+    ]
+  }
+} 

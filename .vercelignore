@@ -1,0 +1,21 @@
+# Python related
+*.py
+__pycache__/
+*.pyc
+venv/
+*.egg-info/
+dist-py/
+build-py/
+requirements.txt
+
+# Only deploy frontend
+/backend
+/data
+/docs
+/ml
+/models
+/notebooks
+/tests
+
+# Allow frontend
+!/frontend 

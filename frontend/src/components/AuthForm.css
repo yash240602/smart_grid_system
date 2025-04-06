@@ -1,0 +1,94 @@
+.auth-form {
+  width: 100%;
+}
+
+.auth-form .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.auth-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.auth-form input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.auth-form-button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  position: relative;
+}
+
+.auth-form-button.loading {
+  color: transparent;
+}
+
+.auth-form-button.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.error-message {
+  background-color: #fff8f8;
+  color: var(--danger-color);
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  border-left: 3px solid var(--danger-color);
+  font-size: 0.9rem;
+}
+
+.credential-hint {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.credential-hint p {
+  margin: 4px 0;
+}
+
+.credential-hint strong {
+  color: #FF3D68;
+  -webkit-user-select: all;  /* Safari support */
+  user-select: all;  /* Makes it easy to select when clicking */
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+} 

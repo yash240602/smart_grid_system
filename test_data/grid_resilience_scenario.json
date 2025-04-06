@@ -1,0 +1,136 @@
+{
+  "scenario_name": "Extreme Weather Resilience Test",
+  "timestamp": "2024-07-15T08:00:00Z",
+  "weather_event": "Severe Thunderstorm with High Winds",
+  "event_duration_hours": 6,
+  
+  "weather_conditions": {
+    "wind_speed_kph": {
+      "average": 85,
+      "peak": 112
+    },
+    "precipitation_mm": 78,
+    "lightning_strikes": 145,
+    "affected_areas": ["RES1", "RES2", "COM1", "SUB2"]
+  },
+  
+  "resilience_metrics": {
+    "pre_event": {
+      "grid_stability_index": 0.95,
+      "redundancy_factor": 0.82,
+      "average_node_connectivity": 2.4,
+      "critical_node_backup_percentage": 100
+    },
+    "during_event": {
+      "grid_stability_index": 0.78,
+      "redundancy_factor": 0.54,
+      "average_node_connectivity": 1.8,
+      "critical_node_backup_percentage": 100
+    },
+    "post_event": {
+      "grid_stability_index": 0.89,
+      "redundancy_factor": 0.75,
+      "average_node_connectivity": 2.2,
+      "critical_node_backup_percentage": 100,
+      "recovery_time_hours": 3.5
+    }
+  },
+  
+  "power_outages": [
+    {
+      "start_time": "2024-07-15T09:23:45Z",
+      "end_time": "2024-07-15T12:15:32Z",
+      "duration_minutes": 172,
+      "affected_nodes": ["RES2"],
+      "affected_customers": 580,
+      "cause": "Transmission line damage from fallen tree"
+    },
+    {
+      "start_time": "2024-07-15T10:02:18Z",
+      "end_time": "2024-07-15T11:45:51Z",
+      "duration_minutes": 104,
+      "affected_nodes": ["COM1"],
+      "affected_customers": 28,
+      "cause": "Lightning strike on distribution transformer"
+    },
+    {
+      "start_time": "2024-07-15T10:45:27Z",
+      "end_time": "2024-07-15T10:58:12Z",
+      "duration_minutes": 13,
+      "affected_nodes": ["RES1"],
+      "affected_customers": 320,
+      "cause": "Automatic protection trip, successfully reclosed"
+    }
+  ],
+  
+  "grid_actions": [
+    {
+      "timestamp": "2024-07-15T08:30:00Z",
+      "action": "Preemptive mode activation",
+      "description": "System switched to storm preparedness mode, increasing reserve margins"
+    },
+    {
+      "timestamp": "2024-07-15T09:15:22Z",
+      "action": "Microgrid islanding",
+      "description": "RES1 community microgrid automatically islanded from main grid"
+    },
+    {
+      "timestamp": "2024-07-15T09:25:03Z",
+      "action": "Battery discharge",
+      "description": "Grid battery BAT1 began discharging to support SUB1 during peak wind"
+    },
+    {
+      "timestamp": "2024-07-15T10:12:45Z",
+      "action": "Load shedding",
+      "description": "Non-critical loads in COM2 automatically reduced by 30%"
+    },
+    {
+      "timestamp": "2024-07-15T11:30:18Z",
+      "action": "Adaptive reconfiguration",
+      "description": "Alternative path created from SUB1 to RES2 via COM2"
+    },
+    {
+      "timestamp": "2024-07-15T13:45:00Z",
+      "action": "Recovery mode",
+      "description": "System began sequenced restoration of normal operations"
+    }
+  ],
+  
+  "renewable_performance": {
+    "PP1_solar_farm": {
+      "normal_output_kw": 650,
+      "storm_output_kw": 120,
+      "output_reduction_percentage": 81.5,
+      "recovery_time_hours": 1.2
+    },
+    "PP2_wind_farm": {
+      "normal_output_kw": 450,
+      "storm_output_behavior": "Curtailed due to high wind speeds",
+      "safety_cutout_wind_speed_kph": 90,
+      "recovery_time_hours": 2.5
+    },
+    "RES1_rooftop_solar": {
+      "normal_output_kw": 85,
+      "storm_output_kw": 15,
+      "output_reduction_percentage": 82.4,
+      "recovery_time_hours": 0.5
+    }
+  },
+  
+  "analysis": {
+    "key_findings": [
+      "The grid maintained 78% stability during peak storm intensity",
+      "Self-healing capabilities reduced average outage duration by 62% compared to historical events",
+      "Microgrid islanding protected 320 customers from 2 potential outages",
+      "Battery storage provided critical support during renewable generation reduction",
+      "Adaptive reconfiguration successfully maintained service to 65% of normally affected customers"
+    ],
+    "improvement_areas": [
+      "Increase tree clearance around the RES2 transmission lines",
+      "Upgrade COM1 distribution transformer lightning protection",
+      "Add additional sectionalizing capability between SUB2 and RES2",
+      "Increase battery storage capacity at SUB1 by 40%"
+    ],
+    "conclusion": "The smart grid demonstrated significant resilience advantages compared to traditional grid architecture. Dynamic reconfiguration, storage integration, and automated responses prevented an estimated 1,840 customer-hours of outages."
+  }
+} 

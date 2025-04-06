@@ -1,0 +1,115 @@
+{
+  "scenario_name": "Multi-type Grid Anomaly Detection",
+  "timestamp": "2024-07-14T16:20:00Z",
+  "detection_algorithm": "isolation_forest",
+  "contamination_factor": 0.05,
+  
+  "monitored_metrics": [
+    "voltage",
+    "current",
+    "power_factor",
+    "frequency",
+    "harmonic_distortion"
+  ],
+  
+  "anomaly_types": {
+    "voltage_sag": {
+      "description": "Short-duration reduction in voltage magnitude",
+      "causes": ["Motor starting", "Line faults", "Transformer energizing"],
+      "impact": "Equipment malfunction, process disruption",
+      "mitigation": "Dynamic voltage restorers, UPS systems"
+    },
+    "voltage_swell": {
+      "description": "Short-duration increase in voltage magnitude",
+      "causes": ["Large load switching off", "Capacitor bank energizing", "Single line-to-ground fault"],
+      "impact": "Equipment damage, insulation breakdown",
+      "mitigation": "Surge protectors, voltage regulators"
+    },
+    "harmonic_distortion": {
+      "description": "Non-sinusoidal waveforms due to non-linear loads",
+      "causes": ["Power electronics", "Variable frequency drives", "LED lighting"],
+      "impact": "Overheating, communication interference, resonance",
+      "mitigation": "Harmonic filters, phase-shifting transformers"
+    },
+    "frequency_deviation": {
+      "description": "Deviation from nominal system frequency",
+      "causes": ["Generation-load imbalance", "Islanding", "Major generation loss"],
+      "impact": "System instability, protection malfunctions",
+      "mitigation": "Load shedding, frequency response resources"
+    }
+  },
+  
+  "detected_anomalies": [
+    {
+      "timestamp": "2024-07-14T03:24:12Z",
+      "node_id": "SUB2",
+      "type": "voltage_sag",
+      "metrics": {
+        "voltage": 382.3,
+        "expected_voltage": 440.8,
+        "deviation_percentage": -13.3,
+        "duration_seconds": 12.5,
+        "anomaly_score": 0.89
+      },
+      "related_events": ["IND2 production line startup at 03:23:45Z"]
+    },
+    {
+      "timestamp": "2024-07-14T07:15:38Z",
+      "node_id": "RES1",
+      "type": "voltage_swell",
+      "metrics": {
+        "voltage": 263.4,
+        "expected_voltage": 240.2,
+        "deviation_percentage": 9.7,
+        "duration_seconds": 8.2,
+        "anomaly_score": 0.73
+      },
+      "related_events": ["Distributed PV inverter synchronization"]
+    },
+    {
+      "timestamp": "2024-07-14T11:42:56Z",
+      "node_id": "IND1",
+      "type": "harmonic_distortion",
+      "metrics": {
+        "total_harmonic_distortion": 12.8,
+        "expected_thd": 5.0,
+        "deviation_percentage": 156.0,
+        "duration_seconds": 125.0,
+        "anomaly_score": 0.95,
+        "harmonic_spectrum": [
+          {"order": 3, "magnitude": 8.2},
+          {"order": 5, "magnitude": 7.1},
+          {"order": 7, "magnitude": 3.5},
+          {"order": 9, "magnitude": 1.2},
+          {"order": 11, "magnitude": 0.8}
+        ]
+      },
+      "related_events": ["New manufacturing equipment online at 11:40:00Z"]
+    },
+    {
+      "timestamp": "2024-07-14T18:03:17Z",
+      "node_id": "SUB1",
+      "type": "frequency_deviation",
+      "metrics": {
+        "frequency": 59.42,
+        "expected_frequency": 60.00,
+        "deviation_percentage": -0.97,
+        "duration_seconds": 18.5,
+        "anomaly_score": 0.81,
+        "rate_of_change": -0.15
+      },
+      "related_events": ["PP2 generation drop at 18:02:45Z", "Load ramp-up in COM1 area"]
+    }
+  ],
+  
+  "explanation": {
+    "method": "The isolation forest algorithm detected these anomalies by isolating observations that are different from the normal patterns. The contamination factor of 0.05 means we expect about 5% of the data to be anomalous.",
+    "analysis": "Four distinct types of power quality issues were detected across different nodes in the grid. The most severe was the harmonic distortion at the industrial node IND1, with an anomaly score of 0.95, likely caused by new manufacturing equipment.",
+    "recommendations": [
+      "Install power quality monitors at IND1 to track harmonic distortion issues",
+      "Review the synchronization parameters of residential PV inverters connected to RES1",
+      "Investigate the coordination between PP2 generation and COM1 load patterns",
+      "Implement improved motor soft-starting at IND2 to reduce voltage sags"
+    ]
+  }
+} 

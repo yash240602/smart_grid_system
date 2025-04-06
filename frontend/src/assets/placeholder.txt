@@ -1,0 +1,15 @@
+Photo Placeholder Instructions
+
+To add the contributor photos:
+
+1. Replace the placeholder files with actual photos:
+   - Save Aarya's photo as "aarya_photo.jpg" in this directory
+   - Save Yash's photo as "yash_photo.jpg" in this directory
+
+2. Photo requirements:
+   - Square or close to square aspect ratio works best
+   - Recommended size: 300x300 pixels or larger
+   - The photos will be displayed in circular format
+   - JPG or PNG format recommended
+
+3. After adding the photos, restart the development server to see the changes. 

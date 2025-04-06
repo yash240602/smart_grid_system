@@ -1,0 +1,48 @@
+{
+  "nodes": [
+    {"id": "PP1", "type": "powerplant", "label": "Solar Farm Alpha", "voltage": 512.4, "capacity": 800, "renewable": true, "lat": 34.12, "lng": -118.45},
+    {"id": "PP2", "type": "powerplant", "label": "Wind Farm Beta", "voltage": 495.6, "capacity": 650, "renewable": true, "lat": 34.05, "lng": -118.22},
+    {"id": "PP3", "type": "powerplant", "label": "Hydroelectric Dam", "voltage": 510.2, "capacity": 1200, "renewable": true, "lat": 34.18, "lng": -118.12},
+    
+    {"id": "SUB1", "type": "substation", "label": "Primary Substation", "voltage": 480.5, "capacity": 3000, "lat": 34.10, "lng": -118.30},
+    {"id": "SUB2", "type": "substation", "label": "Secondary Substation", "voltage": 440.8, "capacity": 1500, "lat": 34.15, "lng": -118.20},
+    
+    {"id": "IND1", "type": "industrial", "label": "Tech Manufacturing", "voltage": 380.2, "consumption": 420, "lat": 34.07, "lng": -118.25},
+    {"id": "IND2", "type": "industrial", "label": "EV Battery Factory", "voltage": 375.8, "consumption": 520, "lat": 34.20, "lng": -118.27},
+    
+    {"id": "COM1", "type": "commercial", "label": "Green Tech Park", "voltage": 350.4, "consumption": 280, "lat": 34.06, "lng": -118.31},
+    {"id": "COM2", "type": "commercial", "label": "Eco Shopping Center", "voltage": 348.5, "consumption": 320, "lat": 34.09, "lng": -118.19},
+    
+    {"id": "RES1", "type": "residential", "label": "Smart Home Community", "voltage": 240.2, "consumption": 180, "lat": 34.22, "lng": -118.24},
+    {"id": "RES2", "type": "residential", "label": "Solar Neighborhood", "voltage": 238.5, "consumption": 150, "lat": 34.19, "lng": -118.15},
+    
+    {"id": "BAT1", "type": "storage", "label": "Grid Battery Array", "voltage": 380.0, "capacity": 300, "charge": 0.85, "lat": 34.11, "lng": -118.26}
+  ],
+  
+  "links": [
+    {"id": "L1", "source": "PP1", "target": "SUB1", "resistance": 0.03, "capacity": 800, "current": 620, "status": "normal"},
+    {"id": "L2", "source": "PP2", "target": "SUB1", "resistance": 0.04, "capacity": 650, "current": 480, "status": "normal"},
+    {"id": "L3", "source": "PP3", "target": "SUB2", "resistance": 0.02, "capacity": 1200, "current": 950, "status": "high"},
+    
+    {"id": "L4", "source": "SUB1", "target": "SUB2", "resistance": 0.02, "capacity": 1500, "current": 1200, "status": "high"},
+    
+    {"id": "L5", "source": "SUB1", "target": "IND1", "resistance": 0.04, "capacity": 500, "current": 420, "status": "normal"},
+    {"id": "L6", "source": "SUB2", "target": "IND2", "resistance": 0.03, "capacity": 600, "current": 520, "status": "normal"},
+    
+    {"id": "L7", "source": "SUB1", "target": "COM1", "resistance": 0.05, "capacity": 300, "current": 280, "status": "normal"},
+    {"id": "L8", "source": "SUB2", "target": "COM2", "resistance": 0.04, "capacity": 350, "current": 320, "status": "normal"},
+    
+    {"id": "L9", "source": "SUB1", "target": "RES1", "resistance": 0.07, "capacity": 200, "current": 180, "status": "normal"},
+    {"id": "L10", "source": "SUB2", "target": "RES2", "resistance": 0.06, "capacity": 180, "current": 150, "status": "normal"},
+    
+    {"id": "L11", "source": "SUB1", "target": "BAT1", "resistance": 0.02, "capacity": 350, "current": 280, "status": "normal"}
+  ],
+  
+  "metadata": {
+    "grid_name": "Green Energy Smart Grid",
+    "region": "West Coast Demo",
+    "timestamp": "2024-07-10T14:30:00Z",
+    "renewable_percentage": 78.5,
+    "grid_stability_index": 0.92
+  }
+} 

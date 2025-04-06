@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GridGenius</title>
+  <script>
+    // This script checks if a redirect is present in the query parameters
+    // and redirects the user to the corresponding path
+    (function() {
+      // Parse query string to see if we need to redirect
+      var qs = window.location.search.replace('?', '');
+      if (qs.split('/')[0] === '') {
+        // We need to redirect to the path specified in the query string
+        var newPath = qs.substr(2); // Remove leading '/'
+        newPath = newPath.replace(/~and~/g, '&');
+        var newUrl = window.location.pathname.slice(0, -1) + (newPath ? '/' + newPath : '');
+        if (newUrl.startsWith('//')){ // Don't allow the redirect to modify the root domain
+          newUrl = newUrl.substring(1);
+        }
+        newUrl += window.location.hash;
+        window.history.replaceState(null, null, newUrl);
+      }
+    })();
+  </script>
+  <!-- For GitHub Pages, we need to redirect to our main app -->
+  <meta http-equiv="refresh" content="0;URL='/smart_grid_system/'" />
+</head>
+<body>
+  <style type="text/css">
+    body {
+      font-family: 'Space Grotesk', 'Courier New', monospace;
+      background-color: #111;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 2rem;
+      margin: 0;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #FF3D68;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+    p {
+      font-size: 1.2rem;
+      max-width: 500px;
+      color: #999;
+      margin-bottom: 2rem;
+    }
+    a {
+      color: #00f2fe;
+      text-decoration: none;
+      font-weight: bold;
+      border-bottom: 1px solid #00f2fe;
+      padding-bottom: 3px;
+      transition: all 0.2s ease;
+    }
+    a:hover {
+      color: #fff;
+      border-color: #fff;
+    }
+  </style>
+  <h1>GridGenius</h1>
+  <p>Redirecting to the app...</p>
+  <p>If you're not redirected automatically, <a href="/smart_grid_system/">click here</a>.</p>
+</body>
+</html> 
