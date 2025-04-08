@@ -1,3 +1,0 @@
-id,source,target,resistance,status
-link1,node1,node2,5,active
-link2,node2,node3,8,active

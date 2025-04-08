@@ -1,7 +1,0 @@
-[
-  {"id": "node1", "voltage": 220, "type": "residential", "label": "House 1"},
-  {"id": "node2", "voltage": 230, "type": "commercial", "label": "Office Building"},
-  {"id": "node3", "voltage": 235, "type": "industrial", "label": "Factory"},
-  {"id": "link1", "source": "node1", "target": "node2", "resistance": 5, "status": "active"},
-  {"id": "link2", "source": "node2", "target": "node3", "resistance": 8, "status": "active"}
-] 
