@@ -15,6 +15,19 @@ import FileUpload from '../components/FileUpload'
 import TeamSection from '../components/TeamSection'
 import './Dashboard.css'
 
+/**
+ * Dashboard Component
+ * 
+ * Primary developer: Yashraj Rai
+ * This component is the main dashboard of the application showing the power grid
+ * visualization, voltage data, and business metrics.
+ * 
+ * Key features implemented by Yashraj:
+ * - Grid visualization integration
+ * - Voltage monitoring with time-series data
+ * - Business impact metrics display
+ */
+
 // Moved interfaces outside component for better performance
 interface Node {
   id: string
