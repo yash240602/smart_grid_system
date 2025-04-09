@@ -8,11 +8,11 @@ import {
   getCostSavings,
   getCaseStudies
 } from '../services/api'
-import useWebSocket from '../services/websocket'
+// import useWebSocket from '../services/websocket'
 import GridGraph from '../components/GridGraph'
 import LoadChart from '../components/LoadChart'
 import FileUpload from '../components/FileUpload'
-import Contributors from '../components/Contributors'
+import TeamSection from '../components/TeamSection'
 import './Dashboard.css'
 
 // Moved interfaces outside component for better performance
@@ -98,54 +98,14 @@ const Dashboard = () => {
   // Performance optimization: track last update time to limit update frequency
   const lastUpdateTimeRef = useRef<{[key: string]: number}>({});
   
-  // Connect to WebSocket for real-time updates with optimized settings
-  const { 
-    lastMessage, 
-    status: wsStatus, 
-    reconnect,
-    errorCount
-  } = useWebSocket('/ws/grid/updates', {
-    onOpen: () => {
-      if (error && error.includes('WebSocket')) {
-        setError(null) // Clear WebSocket specific errors on reconnection
-      }
-    },
-    onMessage: (_event) => {
-      // WebSocket message handling done in useEffect below
-    },
-    onError: () => {
-      if (errorCount < 3) { // Don't spam the user with errors
-        setError('WebSocket connection error. Attempting to reconnect...')
-      } else if (errorCount >= 5) {
-        setError('WebSocket connection failed. Real-time updates disabled. Try refreshing the page.')
-      }
-    },
-    reconnectAttempts: 8,
-    reconnectInterval: 2000,
-    heartbeatInterval: 15000 // 15 second heartbeat interval
-  })
+  // Fake WebSocket status for compatibility
+  const wsStatus = 'CLOSED';
+  const reconnect = () => {}; 
+  const errorCount = 0;
+  const lastMessage = null;
   
-  // Optimize WebSocket connection status monitoring
-  useEffect(() => {
-    // Don't log too frequently - reduce console clutter
-    if (wsStatus === 'RECONNECTING') {
-      // Only update error message if we don't already have a reconnecting message
-      if (!error || !error.includes('Reconnecting')) {
-        setError('Reconnecting to server...')
-      }
-    } else if (wsStatus === 'OPEN') {
-      // Connection restored - clear WebSocket-related errors
-      if (error && error.includes('WebSocket')) {
-        setError(null)
-      }
-    }
-  }, [wsStatus, error])
-  
-  // Add manual reconnect button for users when WebSocket fails
-  const handleManualReconnect = useCallback(() => {
-    setError('Trying to reconnect...')
-    reconnect()
-  }, [reconnect])
+  // Use memo to optimize renderings
+  const memoizedTeamSection = useMemo(() => <TeamSection />, []);
   
   // Load initial grid data with error handling and retries
   useEffect(() => {
@@ -283,6 +243,7 @@ const Dashboard = () => {
   }, []);
   
   // Handle WebSocket updates with rate limiting
+  /*
   useEffect(() => {
     if (!lastMessage) return;
     
@@ -337,6 +298,7 @@ const Dashboard = () => {
       console.error('Error processing WebSocket message:', err);
     }
   }, [lastMessage, lastUpdateTimeRef]);
+  */
   
   // Handle node selection in grid graph with throttling
   const handleNodeClick = useCallback(throttle((nodeId: string) => {
@@ -402,6 +364,12 @@ const Dashboard = () => {
         console.error('Error processing uploaded data:', err);
       }
     }
+  }, []);
+
+  // Add manual reconnect button for users when WebSocket fails
+  const handleManualReconnect = useCallback(() => {
+    setError('WebSocket functionality is currently disabled to improve performance.')
+    // reconnect()
   }, []);
 
   return (
@@ -716,7 +684,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <Contributors />
+      {memoizedTeamSection}
     </>
   )
 }

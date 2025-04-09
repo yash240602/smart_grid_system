@@ -32,12 +32,16 @@ export default defineConfig(({ command }) => {
         '/api': {
           target: 'http://localhost:8000',
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, '')
-        },
-        '/ws': {
-          target: 'ws://localhost:8000',
-          ws: true
+          rewrite: (path) => path.replace(/^\/api/, ''),
+          secure: false,
+          timeout: 60000 // Increase timeout to 60 seconds
         }
+      },
+      hmr: {
+        overlay: false, // Disable error overlay
+        protocol: 'ws',
+        host: 'localhost',
+        port: 3000
       }
     },
     // Only use the base path for production builds, not for development

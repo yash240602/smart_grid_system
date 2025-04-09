@@ -36,8 +36,13 @@ function App() {
   return (
     <ErrorBoundary>
       <div className="app">
-        <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} />
-        <main className="container">
+        <header className="app-header">
+          <h1>GridGenius</h1>
+          <p>Smart Grid Optimization System</p>
+        </header>
+        
+        <main className="app-main">
+          <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} />
           <Suspense fallback={<LoadingIndicator message="Loading page..." />}>
             <Routes>
               <Route path="/login" element={
@@ -61,6 +66,10 @@ function App() {
             </Routes>
           </Suspense>
         </main>
+        
+        <footer className="app-footer">
+          <p>© 2024 GridGenius. All rights reserved.</p>
+        </footer>
       </div>
     </ErrorBoundary>
   )
