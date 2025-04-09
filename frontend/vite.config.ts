@@ -51,8 +51,7 @@ export default defineConfig(({ command }) => {
     build: {
       rollupOptions: {
         input: {
-          main: resolve(__dirname, 'index.html'),
-          'hr-overview': resolve(__dirname, 'public/hr-overview.html')
+          main: resolve(__dirname, 'index.html')
         }
       }
     },
