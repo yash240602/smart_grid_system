@@ -41,13 +41,14 @@ GridGenius is a smart grid optimization system that leverages machine learning t
 
 GridGenius was developed by:
 
-- **Yash Shrivastava** - Madhav Institute of Technology and Science, Gwalior
-  - [GitHub](https://github.com/yash240602)
-  - [LinkedIn](https://www.linkedin.com/in/yash-shrivastava-/)
-
 - **Aarya Dubey** - Madhav Institute of Technology and Science, Gwalior
   - [GitHub](https://github.com/Aaryadubey)
   - [LinkedIn](https://www.linkedin.com/in/aarya-dubey/)
+  - **Key contributions**: Machine Learning pipeline, Anomaly detection algorithm, Prediction models
+
+- **Yash Shrivastava** - Madhav Institute of Technology and Science, Gwalior
+  - [GitHub](https://github.com/yash240602)
+  - [LinkedIn](https://www.linkedin.com/in/yash-shrivastava-/)
 
 - **Yashraj Rai** - Madhav Institute of Technology and Science, Gwalior
   - [GitHub](https://github.com/yash1raj234)

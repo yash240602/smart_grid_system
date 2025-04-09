@@ -1,6 +1,19 @@
 import React from 'react'
 import './MLInsights.css'
 
+/**
+ * ML Insights Component
+ * 
+ * Primary developer: Aarya Dubey
+ * This component showcases the machine learning capabilities of the GridGenius system,
+ * focusing on the ML models, algorithms, and insights generated from the data.
+ * 
+ * Key features implemented by Aarya:
+ * - LSTM model for voltage prediction
+ * - DBSCAN algorithm for anomaly detection
+ * - ML Pipeline for automated data processing and model training
+ */
+
 const MLInsights: React.FC = () => {
   return (
     <div className="ml-insights-page">
