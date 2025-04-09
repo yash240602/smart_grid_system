@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { 
   getGridVisualization, 
   calculateCurrents, 
@@ -94,15 +94,6 @@ const Dashboard = () => {
   
   // Add state for uploaded grid data
   const [uploadedGridData, setUploadedGridData] = useState<any>(null)
-  
-  // Performance optimization: track last update time to limit update frequency
-  const lastUpdateTimeRef = useRef<{[key: string]: number}>({});
-  
-  // Fake WebSocket status for compatibility
-  const wsStatus = 'CLOSED';
-  const reconnect = () => {}; 
-  const errorCount = 0;
-  const lastMessage = null;
   
   // Use memo to optimize renderings
   const memoizedTeamSection = useMemo(() => <TeamSection />, []);
@@ -242,64 +233,6 @@ const Dashboard = () => {
     };
   }, []);
   
-  // Handle WebSocket updates with rate limiting
-  /*
-  useEffect(() => {
-    if (!lastMessage) return;
-    
-    try {
-      const data = typeof lastMessage === 'string' ? JSON.parse(lastMessage) : lastMessage;
-      const currentTime = Date.now();
-      
-      // Handle different types of updates with rate limiting
-      if (data.type === 'voltage_update') {
-        // Limit voltage updates to once every 1000ms
-        if (currentTime - (lastUpdateTimeRef.current['voltage'] || 0) >= 1000) {
-          lastUpdateTimeRef.current['voltage'] = currentTime;
-          
-          // Add new voltage data point
-          const newPoint: VoltageDataPoint = {
-            timestamp: data.timestamp || new Date().toISOString(),
-            value: data.voltage,
-            isAnomaly: data.is_anomaly
-          };
-          
-          setVoltageData(prev => [...prev.slice(-23), newPoint]);
-          
-          // If it's an anomaly, update grid visualization
-          if (data.is_anomaly && data.node_id) {
-            setAnomalyNodeIds(prev => [...prev, data.node_id]);
-          }
-        }
-      } else if (data.type === 'grid_update') {
-        // Limit grid updates to once every 2000ms
-        if (currentTime - (lastUpdateTimeRef.current['grid'] || 0) >= 2000) {
-          lastUpdateTimeRef.current['grid'] = currentTime;
-          
-          // Update nodes or links
-          if (data.nodes) setNodes(data.nodes);
-          if (data.links) setLinks(data.links);
-        }
-      } else if (data.type === 'prediction_update') {
-        // Limit prediction updates to once every 5000ms
-        if (currentTime - (lastUpdateTimeRef.current['prediction'] || 0) >= 5000) {
-          lastUpdateTimeRef.current['prediction'] = currentTime;
-          
-          // Update predictions
-          if (data.predictions) {
-            setPredictions(data.predictions.map((value: number, i: number) => {
-              const timestamp = new Date(Date.now() + (i + 1) * 60 * 60 * 1000).toISOString();
-              return { timestamp, value };
-            }));
-          }
-        }
-      }
-    } catch (err) {
-      console.error('Error processing WebSocket message:', err);
-    }
-  }, [lastMessage, lastUpdateTimeRef]);
-  */
-  
   // Handle node selection in grid graph with throttling
   const handleNodeClick = useCallback(throttle((nodeId: string) => {
     setSelectedNodeId(nodeId);
@@ -369,7 +302,6 @@ const Dashboard = () => {
   // Add manual reconnect button for users when WebSocket fails
   const handleManualReconnect = useCallback(() => {
     setError('WebSocket functionality is currently disabled to improve performance.')
-    // reconnect()
   }, []);
 
   return (
