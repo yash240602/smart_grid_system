@@ -3,7 +3,7 @@
 ## 🚀 Live Demo
 
 Check out our live demo:
-- [Vercel Deployment](https://smart-grid-system.vercel.app) (Recommended)
+- [Vercel Deployment](https://smart-grid-system-frontend-zj4d.vercel.app) (Recommended)
 - [GitHub Pages Deployment](https://yash240602.github.io/smart_grid_system/)
 
 ## 📋 Project Overview
@@ -108,7 +108,6 @@ smart_grid_system/
 ├── frontend/               # React frontend application
 │   ├── src/
 │   │   ├── components/     # Reusable UI components
-│   │   ├── services/       # API and data services
 │   │   │   ├── api.ts      # API interface with mock data
 │   │   │   └── mockData.ts # Sample data for demonstration
 │   │   ├── views/          # Page components
