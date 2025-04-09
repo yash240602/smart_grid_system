@@ -45,13 +45,25 @@ export default defineConfig(({ command }) => {
       }
     },
     // Only use the base path for production builds, not for development
-    base: command === 'build' ? '/smart_grid_system/' : '/',
+    base: command === 'build' ? (process.env.VERCEL ? '/' : '/smart_grid_system/') : '/',
     
     // Configure to handle the HR overview page properly
     build: {
+      outDir: 'dist',
+      assetsDir: 'assets',
+      minify: 'terser',
       rollupOptions: {
         input: {
           main: resolve(__dirname, 'index.html')
+        },
+        output: {
+          manualChunks: {
+            vendor: [
+              'react', 
+              'react-dom',
+              'react-router-dom'
+            ]
+          }
         }
       }
     },

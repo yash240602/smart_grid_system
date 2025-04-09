@@ -11,6 +11,9 @@ const Dashboard = lazy(() => import('./views/Dashboard'))
 const Login = lazy(() => import('./views/Login'))
 const MLInsights = lazy(() => import('./views/MLInsights'))
 
+// Get the base path from Vite environment
+const basePath = import.meta.env.BASE_URL || '/';
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
 
@@ -45,24 +48,24 @@ function App() {
           <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} />
           <Suspense fallback={<LoadingIndicator message="Loading page..." />}>
             <Routes>
-              <Route path="/login" element={
-                isAuthenticated ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />
+              <Route path={`${basePath}login`} element={
+                isAuthenticated ? <Navigate to={`${basePath}dashboard`} /> : <Login onLogin={handleLogin} />
               } />
-              <Route path="/dashboard" element={
+              <Route path={`${basePath}dashboard`} element={
                 <ProtectedRoute isAuthenticated={isAuthenticated}>
                   <Dashboard />
                 </ProtectedRoute>
               } />
               {/* ML Insights page is publicly accessible for recruiters */}
-              <Route path="/ml-insights" element={<MLInsights />} />
+              <Route path={`${basePath}ml-insights`} element={<MLInsights />} />
               {/* Support additional recruiter-related paths */}
-              <Route path="/recruiter" element={<Navigate to="/ml-insights" />} />
-              <Route path="/recruiter-login" element={<Navigate to="/ml-insights" />} />
-              <Route path="/" element={
-                isAuthenticated ? <Navigate to="/dashboard" /> : <Navigate to="/login" />
+              <Route path={`${basePath}recruiter`} element={<Navigate to={`${basePath}ml-insights`} />} />
+              <Route path={`${basePath}recruiter-login`} element={<Navigate to={`${basePath}ml-insights`} />} />
+              <Route path={`${basePath}`} element={
+                isAuthenticated ? <Navigate to={`${basePath}dashboard`} /> : <Navigate to={`${basePath}login`} />
               } />
               {/* Catch all unknown routes */}
-              <Route path="*" element={<Navigate to="/" />} />
+              <Route path="*" element={<Navigate to={`${basePath}`} />} />
             </Routes>
           </Suspense>
         </main>
