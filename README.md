@@ -1,6 +1,84 @@
-# Smart Grid Optimization System
+# GridGenius: Smart Grid Optimization System
 
-A comprehensive power grid management and optimization platform using advanced ML techniques for voltage prediction, anomaly detection, and load scheduling. This project demonstrates how AI/ML can be applied to optimize energy distribution, reduce costs, and prevent outages.
+## 🚀 Live Demo
+
+Check out our live demo:
+- [Vercel Deployment](https://smart-grid-system.vercel.app) (Recommended)
+- [GitHub Pages Deployment](https://yash240602.github.io/smart_grid_system/)
+
+## 📋 Project Overview
+
+GridGenius is a smart grid optimization system that leverages machine learning to efficiently manage power distribution networks. The system provides real-time monitoring, anomaly detection, and predictive analytics to optimize energy flow and reduce costs.
+
+### Key Features
+
+- **Real-time Grid Visualization**: Interactive network map showing voltage levels and power flow
+- **Anomaly Detection**: ML-powered identification of potential issues before they cause outages
+- **Predictive Analytics**: Forecasting future energy needs and potential problems
+- **Cost Optimization**: Automated suggestions for reducing energy costs and carbon footprint
+- **Responsive Design**: Mobile-friendly interface for monitoring on the go
+
+## 💻 Technologies Used
+
+### Frontend
+- React with TypeScript
+- D3.js for data visualization
+- CSS with responsive design principles
+- Vite for fast development and optimized builds
+
+### Backend
+- Python with FastAPI
+- ML Pipeline with TensorFlow/PyTorch
+- WebSocket for real-time updates
+- RESTful API design
+
+### DevOps
+- Docker for containerization
+- GitHub Actions for CI/CD
+- Vercel for deployment
+
+## 👥 Meet the Team
+
+GridGenius was developed by:
+
+- **Yash Shrivastava** - Madhav Institute of Technology and Science, Gwalior
+  - [GitHub](https://github.com/yash240602)
+  - [LinkedIn](https://www.linkedin.com/in/yash-shrivastava-/)
+
+- **Aarya Dubey** - Madhav Institute of Technology and Science, Gwalior
+  - [GitHub](https://github.com/Aaryadubey)
+  - [LinkedIn](https://www.linkedin.com/in/aarya-dubey/)
+
+- **Yashraj Rai** - Madhav Institute of Technology and Science, Gwalior
+  - [GitHub](https://github.com/yash1raj234)
+
+## 📝 For Recruiters
+
+This project showcases our:
+- Full-stack development capabilities
+- Machine learning implementation skills
+- UI/UX design knowledge
+- Understanding of energy systems and optimization
+- Team collaboration and project management
+
+## 🛠️ Installation & Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/yash240602/smart_grid_system.git
+cd smart_grid_system
+
+# Install dependencies
+npm install
+
+# Start the development server
+cd frontend
+npm run dev
+```
+
+## 📊 Screenshots
+
+Check out the 'docs/screenshots' folder for images of the application in action.
 
 ## Demo Project for Course Evaluation
 
@@ -49,37 +127,6 @@ smart_grid_system/
 ├── docs/                   # Documentation
 └── README.md               # Project documentation
 ```
-
-## Installation and Running
-
-### Prerequisites
-
-- Node.js (version 14 or higher)
-- npm or yarn
-
-### Setup
-
-1. Clone this repository
-   ```
-   git clone https://github.com/yourusername/smart_grid_system.git
-   cd smart_grid_system
-   ```
-
-2. Install frontend dependencies
-   ```
-   cd frontend
-   npm install
-   ```
-
-3. Start the development server
-   ```
-   npm run dev
-   ```
-
-4. Open the application in your browser
-   ```
-   http://localhost:5173
-   ```
 
 ## Demo Walkthrough
 
